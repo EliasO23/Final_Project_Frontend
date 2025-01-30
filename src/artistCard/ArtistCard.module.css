@@ -1,0 +1,92 @@
+.artistCard {
+    width: 20vw;
+    height: auto;
+    padding-bottom: 1.5rem;
+    background-color: rgb(80, 80, 81, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.artistCard:hover {
+    background-color: rgb(80, 80, 81, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.artistImage {
+    width: 80%;
+    height: 80%;
+    border-radius: 60%;
+    object-fit: cover;
+}
+
+.infoArtist{
+    display: flex;
+    flex-direction: column;
+    align-items: star;
+    padding-left: 1.5rem;
+    
+}
+
+.artistName {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    font-weight: 500;
+}
+
+.artistLabel {
+    color: #888;
+    margin-top: .5rem;
+}
+
+.playButton {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #1db954;
+    border: none;
+    color: white;
+    padding: .5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.playButton:hover {
+    background-color: #1aa34a;
+}
+
+@media (max-width: 1024px) {
+    .artistCard {
+        width: 22vw;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .artistCard {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 428px) {
+    .artistCard {
+        flex: 1 1 45vw;
+    }
+}

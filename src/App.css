@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.appContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar { 
+  left: 0; 
+  top: 0;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  flex: 2;  
+}
+
+.navHeader{
+  margin-left: 80;
+}
+
+.containerMain {
+  display: flex;
+  justify-content: space-around;
+}
+
+.content {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.login{
+  margin: 2rem auto;
+}
+
+@media (max-width: 768px) {
+    .content{
+      display: none;
+    }
+}
+
+

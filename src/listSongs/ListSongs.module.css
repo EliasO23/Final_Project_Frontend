@@ -1,0 +1,91 @@
+.songFavorites {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0 1rem 1rem;
+    color: white;
+}
+
+.songFavorites h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.mixCard {
+    background: linear-gradient(45deg, #e66465, #9198e5);
+    width: 50vw;
+    height: 16.3rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 20px;
+}
+
+.icon {
+    display: flex;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+}
+
+.icon i {
+    margin-right: .5rem;
+}
+
+.icon h4 {
+    font-weight: 300;
+}
+
+.mixCard h2 {
+    font-size: 3rem;
+    margin-top: 1.5rem;
+}
+
+.mixCard h3 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-top: 0rem;
+}
+
+.recentlyPlayed {
+    color: white;
+    padding: 1rem;
+}
+
+.recentlyPlayed h3{
+    font-size: 1.5rem;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+thead th {
+    text-align: left;
+    padding: .5rem 0;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    .mixCard {
+        width: 66vw;
+    }
+    
+}
+
+@media (max-width: 425px) {
+    .mixCard h2{
+        font-size: 2.5rem;
+    }
+
+    .mixCard h3{
+        font-size: 2rem;
+    }
+
+    .likeButton{
+        display: none;
+    }
+    
+}

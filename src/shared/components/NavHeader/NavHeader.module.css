@@ -1,0 +1,98 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 10px 20px;
+  /* background-color: rgba(41, 41, 43, 0.4); */
+  color: #fff;
+  height: 6rem;
+  padding-bottom: 1.5rem;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  background-color: rgba(223, 218, 218, 0.3);
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  padding: .2rem;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+}
+
+.upgradeButton {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  margin-right: .5rem;
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3.5rem;
+}
+
+.profileDetails h5 {
+  font-size: .8rem;
+  font-weight: 200;
+}
+
+.notificationButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 565px) {
+  .upgradeButton {
+    display: none;
+  }
+
+}
+
+@media (max-width: 425px) {
+  .backButton{
+    display: none;
+  }
+
+  .profileDetails {
+    margin-right: 2rem;
+  }
+
+  .header{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+}
