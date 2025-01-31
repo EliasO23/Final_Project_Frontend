@@ -1,94 +1,110 @@
-import { useForm } from 'react-hook-form';
+
 import { useNavigate } from 'react-router-dom';
 import styles from './LoginForm.module.css'
 import logo from '../assets/img/Kodigo_Music.png'
-import { FormData } from '../shared/interfaces/LoginForm.interfaces';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 
 const LoginForm = () => {
-
-    const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    // Función que se ejecuta cuando el formulario es válido
-    const onSubmit = (data: FormData) => {
-        alert('Cuenta creada');
-        console.log(data);
-        
-        // Redirigir a la página principal (HomePage) cuando todo es correcto
-        navigate('/')
-    };
+    const handleLogin = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch('http://localhost:8000/api/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
+
+                localStorage.setItem('token', data.token);
+                navigate('/');
+
+            } else {
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'error',
+                    iconColor: 'white',
+                    title: 'Oops... Email or Password incorrect',
+                    text: 'Something went wrong!',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    background: '#ff0000',
+                    timerProgressBar: true,
+                    color: 'white',
+                })
+            }
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                toast: true,
+                position: 'top',
+                icon: 'error',
+                iconColor: 'red',
+                title: 'Oops... Error when logging in',
+                text: 'Something went wrong!',
+                showConfirmButton: false,
+                timer: 3000,
+                background: 'gray',
+                timerProgressBar: true,
+                color: 'white',
+            });
+        }
+    }
 
     return (
         <>
-            <div className={styles.welcome}>
-                <h1>Bienvenidos</h1>
-                <p>El sonido de tu vida, en cada momento y lugar.</p>
-            </div>
 
             <div className={styles.loginContainer}>
 
                 <section className={styles.headerLogo}>
                     <img src={logo} alt="Logo KodigoMusic" />
                     <h2>Kodigo Music</h2>
+                    <p>You still don't have an account? <Link to='/register' >Register now</Link></p>
                 </section>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
-
-                    {/* Nombre de usuario */}
-                    <div className={styles.formGroup}>
-                        <label>Username</label>
-                        <input
-                            type="text"
-                            {...register('username', {
-                                required: true,
-                                validate: (value) => !/\s/.test(value),
-                            })}
-                        />
-                        {
-                            errors.username?.type === "required" &&<p className={styles.errorMessage}>Username is required</p> || 
-                            errors.username?.type === "validate" && <p className={styles.errorMessage}>Username cannot contain spaces</p>
-                        }
-                        
-                    </div>
+                <form onSubmit={handleLogin}>
 
                     {/* Correo electrónico */}
                     <div className={styles.formGroup}>
-                        <label>Email</label>
+                        <label>Email:</label>
                         <input
                             type="email"
-                            {...register('email', {
-                                required: true,
-                                pattern: /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
-                            })}
+                            placeholder='Enter your email'
+                            id='email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
-                        {
-                            errors.email?.type === "required" && <p className={styles.errorMessage}>Email is required</p> ||
-                            errors.email?.type === "pattern" && <p className={styles.errorMessage}>Email must be a valid @gmail.com address</p>
-                        }
                     </div>
 
                     {/* Contraseña */}
                     <div className={styles.formGroup}>
-                        <label >Password</label>
+                        <label >Password:</label>
                         <input
                             type="password"
-                            {...register('password', {
-                                required: true,
-                                minLength:8,
-                                pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-
-                            })}
+                            placeholder='Enter your password'
+                            id='password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
-                        {
-                            errors.password?.type === "required" && <p className={styles.errorMessage}>Password is required</p> ||
-                            errors.password?.type === "minLength" && <p className={styles.errorMessage}>Password must be at least 8 characters long</p> ||
-                            errors.password?.type === "pattern" && <p className={styles.errorMessage}>Pastword must contain at least one letter (uppercase or lowercase), one number, and one special character (@$!%*?&). </p>
-                        }
                     </div>
 
                     <div className={styles.btn}>
-                        <button type="submit">Register</button>
+                        <button type="submit">Log In</button>
 
                     </div>
                 </form>

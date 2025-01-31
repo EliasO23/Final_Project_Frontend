@@ -1,5 +1,5 @@
-const CLIENT_ID = 'c2ae2619ff8d49e89e843414fb29eb4b';
-const CLIENT_SECRET = '23be5cc6982f4f37a54a70abdd7820f7';
+const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+const CLIENT_SECRET = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
 const TOKEN_URL = 'https://accounts.spotify.com/api/token';
 const API_URL = 'https://api.spotify.com/v1';
 
