@@ -5,6 +5,7 @@ import HomePage from './Pages/HomePage/HomePage';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import MusicPage from './Pages/MusicPage/MusicPage';
 import RegisterPage from './Pages/RegisterPage/RegisterPage';
+import UserPage from './Pages/UserPage/UserPage';
 
 const App = () => {
 
@@ -26,6 +27,9 @@ const App = () => {
     },{
       path: '/register',
       element: <RegisterPage />
+    },{
+      path: '/users',
+      element: <UserPage />
     }
   ])
 

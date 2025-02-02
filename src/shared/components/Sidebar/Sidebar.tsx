@@ -9,6 +9,7 @@ import { MdOutlineLibraryMusic } from "react-icons/md";
 import { FaPhotoVideo } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoLogInOutline } from "react-icons/io5";
+import { CiUser } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -54,6 +55,9 @@ const Sidebar = () => {
                 <h3>Other</h3>
                 <ul>
                     <li><i><IoSettingsOutline /></i> <span>Settings</span></li>
+                    <Link to='/users'>
+                        <li><i><CiUser /></i> <span>Users</span></li>
+                    </Link>
                     <Link to='/login'>
                         <li><i><IoLogInOutline /></i> <span>Log out</span></li>
                     </Link>

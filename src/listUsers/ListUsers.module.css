@@ -1,0 +1,49 @@
+/* Contenedor general */
+.container {
+  width: 90%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* Título */
+.container h2 {
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 2rem;
+}
+
+/* Estilos generales de la tabla */
+.container table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  color: white;
+  overflow: hidden;
+}
+
+/* Encabezados */
+.container thead {
+  background-color: #1f92b4;
+  color: white;
+  border: none;
+}
+
+.container th,
+.container td {
+  padding: 1.2rem;
+  border-bottom: white 1px solid;
+  text-align: left;
+}
+
+/* Estado Activo/Deshabilitado */
+.container td:last-child {
+  font-weight: bold;
+}
+
+.container td:last-child {
+  color: green;
+}
+
+.container td:last-child:contains("Deshabilitado") {
+  color: red;
+}
